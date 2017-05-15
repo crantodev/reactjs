@@ -4,7 +4,7 @@ import styles from './Button.scss';
 class Button extends React.Component {
   render() {
     return (
-      <button className={styles.button}>Hit me!</button>
+      <button className={styles.button} onClick={this.props.click}>Hit me!</button>
     );
   }
 }
