@@ -1,17 +1,15 @@
+import 'react-mdl/extra/material.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from './components';
+import { Home } from './scenes';
 
 class App extends React.Component {
-  clickListener(event) {
-    event.preventDefault();
-    console.log('Clicked!!');
-  }
 
   render() {
     return (
       <div>
-        <Button click={this.clickListener}></Button>
+        <Home />
       </div>
     );
   }

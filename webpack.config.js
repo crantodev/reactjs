@@ -7,8 +7,15 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'app.bundle.js'
   },
+  resolve: {
+    modules: ['node_modules', 'lib', 'app', 'vendor'],
+  },
   module: {
     loaders: [
+      {
+        test: /\.css$/,
+        use: ['style-loader','css-loader',],
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
