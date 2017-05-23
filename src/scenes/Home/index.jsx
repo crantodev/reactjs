@@ -1,17 +1,8 @@
 import './style.scss';
 
 import React from 'react';
-import { List, ListItem, ListItemContent, ListItemAction, Icon } from 'react-mdl';
-
-class Gist extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>{this.props.description}</p>
-      </div>
-    );
-  }
-}
+import { List } from 'react-mdl';
+import Gist from './components/Gist.jsx'
 
 class Home extends React.Component {
   constructor(props) {
@@ -32,20 +23,19 @@ class Home extends React.Component {
 
   render() {
     const { gists } = this.state;
-    return(
-      <div style={{width: '70%', margin: 'auto'}}>
-        <List>
-        {gists ? gists.map((gist, i) =>
-          <ListItem key={i}>
-            <ListItemContent avatar="code">{gist.description}</ListItemContent>
-            <ListItemAction>
-              <a href={gist.html_url} target="_blank"><Icon name="arrow_forward" /></a>
-            </ListItemAction>
-          </ListItem>)
-          : ''}
-        </List>
-      </div>
-    );
+    if (gists) {
+      return(
+        <div style={{width: '70%', margin: 'auto'}}>
+          <List>
+            { gists.map((gist, i) => <Gist content={gist} key={i} />) }
+          </List>
+        </div>
+      );
+    } else {
+      return (
+        <h1>Loading...</h1>
+      );
+    }
   }
 }
 
